@@ -1,0 +1,5 @@
+package com.shoestore.domain;
+
+public class User {
+
+}

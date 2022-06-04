@@ -1,0 +1,5 @@
+package com.shoestore.repository;
+
+public interface PasswordResetTokenRepository {
+
+}

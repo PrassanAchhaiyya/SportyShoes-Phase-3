@@ -1,0 +1,5 @@
+package com.shoestore.config;
+
+public class SecurityConfig {
+
+}

@@ -1,0 +1,5 @@
+package com.shoestore.utility;
+
+public class MailConstructor {
+
+}

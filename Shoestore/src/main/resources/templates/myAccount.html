@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-8">
+				<h2 class="section-headline"><span style="background-color:#ffffff;padding:5px 22px;">User
+						Account</span></h2>
+			</div>
+			<div class="col-xs-4">
+				<img src="https://cdn3.vectorstock.com/i/1000x1000/99/57/running-shoes-icon-logo-design-vector-27309957.jpg"
+					class="img-responsive" />
+			</div>
+		</div>
+
+		<hr style="height: 1px; background-color: #333;" />
+
+
+		<div class="row" style="margin-top : 120px;">
+			<div class="col-xs-9 col-xs-offset-3">
+				<!--nav tabs-->
+				<ul class="nav nav-tabs">
+					<li th:classappend="${classActiveNewAccount}? 'active'"><a href="#tab-1" data-toggle="tab"><span
+								style="color : red;">Create new account</span></a></li>
+					<li th:classappend="${classActiveLogin}? 'active'"><a href="#tab-2" data-toggle="tab"><span
+								style="color : red;">Log in</span></a>
+					</li>
+					<li th:classappend="${classActiveForgetPassword}? 'active'"><a href="#tab-3" data-toggle="tab"><span
+								style="color : red;">Forgot Password
+							</span></a></li>
+				</ul>
+				<!--tab panels-->
+
+				<div class="tab-content">
+					<!--new user-->
+					<div class="tab-pane" id="tab-1" th:classappend="${classActiveNewAccount}? 'in active'">
+						<div class="panel-group">
+							<div class="panel panel-default" style="border:none;">
+								<div class="panel-body" style="background-color:#ededed;margin-top:20px;">
+									<div class="alert alert-info" th:if="${emailSent}">Email sent</div>
+									<form th:action="@{/newUser}" method="post">
+										<div class="form-group">
+											<label for="newUsername">* Username </label>
+											<input required="required" type="text" class="form-control" id="newUsername"
+												name="username" />
+											<p>enter your username here</p>
+										</div>
+
+										<div class="form-group">
+											<label for="email">* Email Address </label>
+											<input required="required" type="text" class="form-control" id="email"
+												name="email" />
+											<p>enter your email here</p>
+										</div>
+										<button type="submit" calss="btn btn-primary">Create new account</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--log in-->
+					<div class="tab-pane" id="tab-2" th:classappend="${classActiveLogin}? 'in active'">
+						<div class="panel-group">
+							<div class="panel panel-default" style="border:none;">
+								<div class="panel-body" style="background-color:#ededed;margin-top:20px;">
+									<form th:action="@{/login}" method="post">
+										<div class="form-group">
+											<label for="username">* Username </label>
+											<input required="required" type="text" class="form-control" id="newUsername"
+												name="username" />
+											<p>enter your username here</p>
+										</div>
+
+										<div class="form-group">
+											<label for="password">* Password </label>
+											<input required="required" type="password" class="form-control"
+												id="password" name="password" />
+											<p>enter your password</p>
+										</div>
+										<button type="submit" calss="btn btn-primary">Log in</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--forgot password-->
+					<div class="tab-pane" id="tab-3" th:classappend="${classActiveForgetPassword}? 'in active'">
+						<div class="panel-group">
+							<div class="panel panel-default" style="border:none;">
+								<div class="panel-body" style="background-color:#ededed;margin-top:20px;">
+									<div th:if="${emailNotExist}" class="alert alert-danger">Email doesnt exist</div>
+									<div th:if="${forgetPasswordEmailSent}" class="alert alert-success">Email sent</div>
+									<form th:action="@{/forgotPassword}" method="post">
+										<div class="form-group">
+											<label for="recoverEmail">* Your Email </label>
+											<input required="required" type="text" class="form-control"
+												id="recoverEmail" name="email" />
+											<p>enter your registered email here</p>
+										</div>
+										<button type="submit" calss="btn btn-primary">Submit</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--tab panels-->
+			</div>
+		</div>
+	</div>
+
+	</div><!-- end of container -->
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

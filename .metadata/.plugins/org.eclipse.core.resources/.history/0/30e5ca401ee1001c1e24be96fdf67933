@@ -1,0 +1,5 @@
+package com.shoestore.domain.security;
+
+public class PasswordResetToken {
+
+}
